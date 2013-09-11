@@ -9,7 +9,7 @@
 
 normalize(URI) ->
   case http_uri:parse(URI) of
-    {Scheme, UserInfo, Host, Port, Path, _Query} ->
+    {ok, {Scheme, UserInfo, Host, Port, Path, _Query}} ->
       normalize(Scheme, UserInfo, string:to_lower(Host), Port, [Path]);
     Else ->
       Else
